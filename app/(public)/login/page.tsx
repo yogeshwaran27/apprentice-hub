@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import "./Login.css"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -28,12 +29,7 @@ export default function LoginPage() {
         return
       }
 
-      // Redirect based on role
-      if (data.role === "admin") {
-        router.push("/admin")
-      } else {
-        router.push("/dashboard")
-      }
+      router.push(data.role === "admin" ? "/admin" : "/dashboard")
 
     } catch {
       setError("Something went wrong")
@@ -43,36 +39,54 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md p-8 border rounded-lg shadow">
-        <h1 className="text-2xl font-bold mb-6">Login to Apprentice Hub</h1>
+    <div className="login-container">
+      <div className="login-card">
 
-        {error && (
-          <p className="text-red-500 text-sm mb-4">{error}</p>
-        )}
+        <p className="login-back">← Back</p>
 
-        <div className="flex flex-col gap-4">
+        <h1 className="login-title">Hi, welcome back</h1>
+        <p className="login-subtitle">
+          Enter your email and password to continue to ApprenticeHub.
+        </p>
+
+        {error && <p className="login-error">{error}</p>}
+
+        <div className="login-form">
+
+          <label className="login-label">EMAIL ADDRESS</label>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border p-2 rounded"
+            className="login-input"
           />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="border p-2 rounded"
-          />
+
+          <label className="login-label">PASSWORD</label>
+          <div className="password-wrapper">
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="login-input"
+            />
+            <span className="eye-icon">👁</span>
+          </div>
+
+          <p className="forgot-password">Forgot password?</p>
+
           <button
             onClick={handleLogin}
             disabled={loading}
-            className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:opacity-50"
+            className="login-button"
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Logging in..." : "→ Log in"}
           </button>
+
+          <p className="signup-text">
+            Don’t have an account? <span>Create a free account</span>
+          </p>
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ export function ClientRoot({ children }: { children: React.ReactNode }) {
           <Toaster />
           <Sonner />
           {showLoader && <PageLoader />}
-          <Layout>{children}</Layout>
+          {!showLoader &&<Layout>{children}</Layout>}
         </TooltipProvider>
       </AuthProvider>
     </QueryClientProvider>

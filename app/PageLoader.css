@@ -1,0 +1,109 @@
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  transition: opacity 1s ease-in-out;
+}
+
+.page-loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image:
+    linear-gradient(to right, #ffffff 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.big-percentage-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+  padding-bottom: 5vh;
+}
+/* Background fill (progress) */
+.progress-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(33, 89, 71, 0.2); /* UPDATED */
+  transition: height 50ms linear;
+}
+
+/* Big percentage text */
+.big-percentage {
+  font-size: 22vw;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: rgba(38, 46, 51, 0.04); /* UPDATED */
+  opacity: 1; /* remove extra opacity since color already has alpha */
+  white-space: nowrap;
+}
+
+/* Logo container */
+.logo-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  background: transparent; /* UPDATED */
+  padding: 20px 32px;
+  border: none; /* optional: cleaner look */
+  box-shadow: none; /* optional: remove shadow */
+}
+
+/* Remove gradient overlay if you want FULL transparency */
+.logo-box::before {
+  display: none;
+}
+.big-percentage span {
+  font-size: 14vw;
+}
+
+.loader-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: fadeIn 0.6s ease-in;
+}
+
+
+.logo-img {
+  position: relative;
+  height: 64px;
+  width: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

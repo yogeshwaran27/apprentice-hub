@@ -1,11 +1,23 @@
-import React from "react";
+import {
+  HeroSection,
+  HowItConnectsSection,
+  StartTrackPrepSection,
+  OpenRolesSection,
+  ClosingAlertBanner,
+  TestimonialsSection,
+  CTASection,
+} from "@/components/HomePageSections";
 
-const HomePage: React.FC = () => {
+export default function HomePage() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold">Welcome to Apprentice Hub</h1>
-    </div>
+    <>
+      <HeroSection />
+      <HowItConnectsSection />
+      <StartTrackPrepSection />
+      <OpenRolesSection />
+      <ClosingAlertBanner />
+      <TestimonialsSection />
+      <CTASection />
+    </>
   );
-};
-
-export default HomePage;
+}
